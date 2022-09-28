@@ -1,0 +1,293 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+:root{
+    --orange:#ffaa33;
+    --grayColor:#cccccc;
+    --white-color:#ffffff;
+    --drawer-width:clamp(210px,22vw,325px);
+}
+h1{
+    font-size: 1.3rem;
+}
+h2{
+    font-size: 1.2rem;
+}
+li{
+    list-style: none;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-areas: 
+    "drawer nav nav nav"
+    "drawer content content content";
+    grid-template-rows: 0.8fr 4fr;
+    grid-template-columns: 5em 1fr 1fr 1fr;
+}
+/* Side Bar ........................................... */
+.sidebar{
+    grid-area: drawer;
+    background-color: var(--orange);
+    color: white;
+    width: 5em;
+    position: fixed;
+    height: 100vh;
+    transition: .5s ease-in;
+}
+.dashboard h1{
+    text-transform: uppercase;
+}
+.sidebar:hover{
+    width: var(--drawer-width);
+}
+.sidebar:hover > .menuitem > h2{
+    display: inline;
+}
+.sidebar:hover > .menuitem > h1{
+    display: inline;
+}
+.sidebar img{
+    width: 1.5em;
+}
+.sidebar > :not(first-child) > *{
+    padding: 1vw 0.1vw 0.1vw 0vw;
+    font-size: calc(17px + 0.2vw);
+    
+}
+.sidebar > :first-child > img{
+   width: 3.5em;
+  padding-right: 1em;
+}
+.sidebar > div:nth-child(8){
+    padding-top: 60px;
+}
+
+.menuitem{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding-left: 20px;
+}
+.menuitem h1{
+    display: none;
+    margin-left: 5%;
+}
+.menuitem h2{
+    display: none;
+    margin-left: 5%;
+}
+/* Side Bar Ends ........................................... */
+
+/* Nav Bar ................................................. */
+
+.nav-bar{
+    grid-area: nav;
+    padding: 1.5rem 3rem;
+    border-bottom: rgba(0,0,0,0.5);
+}
+ .nav-bar .account{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.2rem;
+} 
+
+ .search{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-right: auto;
+}
+.account{
+    display: flex;
+    align-items: center;
+   
+} 
+.account p{
+    font-size: 1rem;
+}
+.account-icon img{
+width: 1.2em;
+margin: 0 .2em;
+cursor: pointer;
+
+}
+
+.search input{
+    background-color: var(--grayColor);
+    display: inline-block;
+    border: none;
+    outline-color: var(--orange);
+    padding: .5em 1em;
+    border-radius: 25px;
+    width: min(80%, 500px);
+}
+.top-nav-bar{
+    display: flex;
+    align-items: center;
+}
+
+.bottom-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+@media(max-width:900px) {
+    .bottom-nav{
+        flex-direction: column;
+      
+    }
+}  
+
+.buttons .btn{
+    padding: .7em 2em;
+    background-color: var(--orange);
+    border: none;
+    border-radius: 15px;
+    margin-left: 20px;
+    margin-top: 2em;
+    color: white;
+    cursor: pointer;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.profile-avatar img{
+    width: 2.5em;
+    border-radius: 50%;
+    margin-left: 1em;
+    cursor: pointer;
+
+}
+.profile-name{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.name{
+    margin-left: 1em;
+    font-weight: bold;
+}
+.greeting{
+    font-weight: 600;
+    font-size: .8em;
+}
+.name-user{
+    font-weight: bold;
+}
+.profile-avatar2 img{
+    width: 5em;
+    border-radius: 50%;
+}
+/* Side Bar Ends ........................................... */
+
+/* MAIN CONTENT SECTION...................................................................... */
+.content{
+    background-color: var(--grayColor);
+    grid-area: content;
+    display: grid;
+    gap: 2em;
+    padding: 2em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "project project announcement"
+    "project project trending";
+}
+.content h3{
+    margin-bottom: 15px;
+}
+
+@media (max-width:900px) { 
+    .content{
+       grid-template-columns: 1fr 1fr;
+       grid-template-areas:
+       "project project"
+       "project project"
+       "announcement ."
+       "trending .";
+    }
+    
+}
+@media (max-width:900px) { 
+    .content{
+       grid-template-columns: 1fr ;
+     
+    }
+    
+}
+
+/* Project div................................ */
+.projects{
+    grid-area: project;
+  
+}
+.projects-cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1em;
+}
+@media (max-width:700px) { 
+    .projects-cards{
+        display: grid;
+        grid-template-columns: 1fr ;
+        gap: 1em;
+    }
+    
+}
+.card{
+    background-color: white;
+    padding: 30px;
+    border-left: 8px solid var(--orange);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    
+}
+.icons{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1em;
+}
+.icons img{
+    width: 1.4em;
+    display: inline-block;
+    margin-left: .5em;
+    cursor: pointer;
+}
+/* Announcement............................. */
+.announcement{
+    grid-area: announcement; 
+}
+.announcement li{
+    border-bottom: 2px solid rgb(168, 165, 165);
+    padding-bottom: 15px;
+    margin-top: 15px;
+}
+/* Trending............................... ..*/
+.trending{
+    grid-area:trending;  
+}
+.card li{
+    margin-top: 1.3em;
+}
+.username{
+    font-weight: bold;
+}
+.avatar-2 img{
+width: 3em;
+border-radius: 50%;
+margin-right: 1em;
+cursor: pointer;
+}
+.trend{
+    display: flex;
+}
